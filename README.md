@@ -1,12 +1,17 @@
 # Commandment
 
-Finally a shell runner that does the right thing!
+> Commandment, _noun_.
+>
+> 1. A command or edict
+>
+> 2. The act of commanding
 
-- returns true on success
-- raises SystemCallError with Errno set and a message
-- no icky extraneous output
-- connects stdout to stdout and stderr to stderr
-- bonus: turns stderr red
+Finally, a ruby shell command runner that just does the right thing!
+
+- Returns true on success (status code 0)
+- When non-zero, raises SystemCallError with Errno set and a message
+- Connects stdout to stdout and stderr to stderr
+- Bonus: turns stderr red
 
 ## Installation
 
@@ -26,7 +31,16 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Include (or extend) Commandment in the scope where you wish to use it, and use `cmd` to run shell commands.
+
+    include Commandment
+
+    cmd("echo Hello World!")
+
+`cmd` accepts some options:
+
+- `output` passes stdout and stderr forward to ruby (defaults to false -- no output)
+- `err_hl` adds terminal codes to turn stderr red (defaults to true)
 
 ## Development
 
@@ -36,8 +50,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/commandment.
-
+Bug reports and pull requests are welcome on GitHub at https://github.com/dthtvwls/commandment.
 
 ## License
 
